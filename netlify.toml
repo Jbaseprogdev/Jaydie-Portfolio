@@ -1,0 +1,44 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+[[redirects]]
+  from = "http://alphatron.ca/*"
+  to = "https://alphatron.ca/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.alphatron.ca/*"
+  to = "https://alphatron.ca/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.alphatron.ca/*"
+  to = "https://alphatron.ca/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://app.alphatron.ca/*"
+  to = "https://app.alphatron.ca/:splat"
+  status = 301
+  force = true
